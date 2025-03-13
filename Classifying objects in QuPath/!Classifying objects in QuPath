@@ -1,0 +1,45 @@
+Collection of scripts mostly from Pete, but also taken from the forums. Note you can always run a saved classifier using the
+runClassifier() command, with the file path included as a string.
+
+TOC
+
+A simple cell classifier.groovy - One way to classify cells.
+
+A simple classifier 2.groovy - Another way.
+
+Annotation Classifications to Name field.groovy - Sets the Name of the annotation to its classification. Useful for applying a second
+classifier without losing the results of the first.
+
+Annotation classifier.groovy - Classify annotations.
+
+Classifier sample.groovy - Another cell classifier, but more complicated format.
+
+JSON classifier on specific objects.groovy - How to target specific objects with the new classifiers as of M9
+
+JSON object classifier.groovy - simple one line script
+
+OneStep Classifier.groovy - In case I forget the name of the function.
+
+Pete base classifier.groovy - One of the original classification scripts, has the most protections against errors.
+
+Reclassify one class with derived classes.groovy - Takes the Tumor class and allows derived classes based on hematoxylin thresholds
+
+Rename and recolor a class.groovy - Not included here, see: https://gist.github.com/Svidro/e00021dff92ea1173e535008854be72e#file-rename-and-recolor-a-class-groovy
+
+Reset Cell Classifications only.groovy - Important when you have subcellular detections. You would not want to reset their class as that
+alters the summary values in the cell measurement list.
+
+Set Selected Object Class.groovy - Change the class of a specific object. Much like the annotation context menu, but works for detections
+
+Subcellular detection to nuclear or cyto.groovy - Pete's script for checking whether a subcellular detection is within the nucleus.
+Creates a derived class.
+
+Training set combining.groovy - combine two or more training set files from different projects/images
+
+*Many of these scripts are out of date, and you can get a list of active classes various ways:
+Set classList = []
+for (object in getAllObjects().findAll{it.isDetection() /*|| it.isAnnotation()*/}) {
+    classList << object.getPathClass()
+}
+
+def classifications = new ArrayList<>(getDetectionObjects().collect {it.getPathClass()} as Set)

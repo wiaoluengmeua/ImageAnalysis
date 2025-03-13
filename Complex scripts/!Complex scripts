@@ -1,0 +1,59 @@
+Scripts that are complex enough not to fit in any of the other simple categories.
+TOC
+
+Affine transform objects between images.groovy - used with the Align images experimental tool in v0.2.0m1
+
+Background staining check - Takes annotations, expands an area around them, checks the staining level in that area, 
+then deletes all expanded areas and any original areas that violate some condition. Can help check for staining artifacts.
+
+Classifier with GUI.groovy - User interface based macro to simplify classifying many possible channels. Also generates all
+possible combinations of base classes (double, triple, etc positives).
+*Added updated version for 0.2.0M5
+
+Classifier with no GUI.groovy - Same as above but streamlined for use in a script, with no user interaction.
+
+*Added Detection based versions of both above scripts which should work for tiles.
+
+DBSCAN 0.2.0.groovy - Implementation of DBSCAN for cluster analysis.
+
+Hotspot Detection 0.2.0M8.groovy - Detecting clusters of cells above a certain density and size threshold, written for 0.2.0M8
+
+Invasion assay or tumor adjacent area.groovy - Creating areas of increasing distance from the tumor annotation border. Use negative 
+values in the annotation expansion for invasion assays.
+
+Lipid detection and measurement.groovy - Detects lighter areas within your tissue area and creates detection objects with measurements.
+
+Multiple cell detections.groovy - Set of scripts that allow the user to run one cell detection, store those results, run a second cell
+detection, and then import the results of the first. Useful when one set of Cell detection variables does not accurately detect all 
+of your cells.
+
+Positive Pixel scripting for QP 1.2.groovy - Demonstrates ways to succesfully use positive pixel detection to handle difficult staining.
+
+Positive Pixel scripting for QP 1.3.groovy - Same as above but modified for alterations to positive pixel detection in 1.3
+
+R-squared.groovy - GUI based R squared calculator-allows selection of objects by class. Only works for detections.
+Added Plots and ability to save/export results of multiple calculations
+
+R-squared pixel values.groovy - GUI based R squared calculator for pixel values in objects, combination of the R-squared and
+colocalization scripts
+
+RareCellFetcher-allAnnotations.groovy - Totally higher class than CellTinder or CellRoulette.
+
+Step 1 through Step 4 - Part of a workflow for semiautomated generation of very high resolution cells. User defines the cytoplasm.
+https://groups.google.com/forum/#!msg/qupath-users/ehxID096NV8/U7n5_CNABwAJ
+
+Tissue detection (for workflow) - Two scripts that mimic Simple Tissue Detection from QuPath, but give more channel flexibility when
+working with fluorescent images. Normally QuPath will only use the first channel for tissue detection, while this will let you choose
+the balance between channels that works best for you. Workflow version removes the GUI.
+https://groups.google.com/forum/#!topic/qupath-users/4g26bLOC_CE
+
+Tissue detection m5 - update to the scripts to work with version m5
+
+Tumor Region Measurements - Script is from Pete and can be used for measurements in and around a tumor.
+https://petebankhead.github.io/qupath/scripts/2018/08/08/three-regions.html
+
+Updated Jan 2019 with Classifier scripts to make it easier to... well, classify. https://groups.google.com/forum/#!topic/qupath-users/LMxYihQMvTw
+
+Updated Dec 2018 with a Tissue Detection script that can act in a similar (rough) fashion to simple tissue detection, but has the
+advantage of allowing the user to choose and weight channels. This makes it possible to look at specific areas within tissue 
+samples, even in 7-8 color images. See here for examples and an explanation: https://groups.google.com/forum/#!topic/qupath-users/4g26bLOC_CE

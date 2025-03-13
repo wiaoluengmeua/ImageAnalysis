@@ -1,0 +1,23 @@
+Scripts mostly taken from Pete, and also from the forums.  For easy access and reference.  
+Covers both Selecting, which is necessary to run most commands like cell detection, and collecting objects into a variable
+for processing.  The latter is more efficient when you do not need to run a command like cell detection.
+
+TOC 
+
+A Selection guide.groovy - not actually a script, just a collection of useful tips.
+
+Access top level objects.groovy - Creates a list of all objects at the "top" of the hierarchy. This list is dynamic.
+
+Decendant and child objects.groovy - Shows accessing child objects or decendant objects.
+
+Get objects within another object.groovy - ignores hierarchy in case of overlaps!
+
+SelectClassificationsByName.groovy - Select objects based on their classifications having certain words
+
+Selecting objects within a drawn annotation.groovy - <- What it says. Removes the drawn/selected annotation.
+
+Selecting objects touching an annotation.groovy - uses Geometry functions to determine if the edges of objects are touching.
+
+Testing selection models.groovy - For my reference.
+
+Using selectionModel for groups of objects.groovy - Very basic example of creating a selection based on some thresholding.

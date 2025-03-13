@@ -1,0 +1,46 @@
+Collections of scripts to alter object colors harvested mainly from Pete, but also picked up from the forums
+TOC
+
+Change IF channel color.groovy - Change the LUT for individual channels. Does not work with OpenSlide servers (check Image tab).
+
+Change colors by subclass.groovy - Detection object color adjustment when using subclasses.
+
+Change subcellular detection color - Hugely useful when working with subcellular detections as, by default, they are a derived class
+and cannot be altered directly through the Annotation tab interface.
+
+Density heatmap by class.groovy - Add a measurement to cells that can be used to visually identify hotspots per class
+
+Density heatmap by class with blur.groovy - better looking heatmap than above.
+
+Heatmap for channels.groovy - Apply a LUT to a channel, instead of the default solid colors
+
+Invert LUT of selected channels.groovy
+
+Measurement map buttons.groovy - create some fixed buttons to make viewing consistent measurement maps much easeier.
+
+Measurement Maps color lock.groovy - set fixed values for the measurement maps. Useful when comparing two images to each other and
+keeping the same relative color display values.
+
+Measurement Maps in 0.2.0.groovy - a code example for how to use measurement maps in version 0.2.0
+
+Rename and recolor a class.groovy - <-- what it says
+
+Show specific classes of objects v3.groovy - adds in checkboxes for groups of similarly named classes
+
+Specific Object Color changes.groovy - A way of cycling through objects and set each object to a different color
+
+TMA heatmap by color.groovy - Create detection objects in each TMA core, giving them measurements that are summaries of what is 
+in the core. When Measurement maps are used and one of the summary measurments is selected, the whole TMA turns into a heatmap
+
+1
+
+From Gitter:
+If you have a class already created, you can alter the color for that class (replace pathClass with the class)
+
+pathClass.setColor(getColorRGB(0, 200, 0))
+
+This requires having the class as a variable, for example:
+stroma = getPathClass('Stroma')
+
+recolored would be:
+stroma.setColor(getColorRGB(0, 200, 0))

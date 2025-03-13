@@ -1,0 +1,101 @@
+Collections of scripts harvested mainly from Pete, but also picked up from the forums
+
+TOC
+
+Accessing dynamic measurements.groovy - Most annotation measurements are dynamically created when you click on the annotation, and 
+are not accessible through the standard getMeasurement function. This is a way around that.
+
+Affine transformation.groovy - access more accurate measurements for the affine transformation used in the image alignment (m5/m6+)
+
+Alignment of local cells.groovy - check neighborhood for similarly aligned cells
+
+Angles for cells.groovy - Calculate angles relative to horizontal.
+
+Area measurements per class to annotation.groovy - Summary measurements for tile/area based analyses. Should work for all classes present.
+
+Area measurements to annotation.groovy - Kind of terrible holdover, but adds size measurements to Annotations. Could be altered for
+detection tiles, which would likely be more useful.
+
+Cell summary measurements to annotation.groovy - Go through the cells and add some sort of summary measurement to their parent
+annotation. Examples might be the mean area of all cells, or the min and max intensities of cells of a certain class. Get createive.
+
+Chromaticity - cell measurement.groovy - Demonstration of how to calculate the green chromaticity using Calculate Features.
+
+Class cell counts,percentages and density to parent annotation.groovy - mostly same as above but for cells
+
+Class percentages to TMA measurements.groovy - Checks all cells in each core for membership within a listed set of classes.
+
+Colocalization v4.groovy - Actually v3, and works with 0.2.0m2. Calculate Pearson's and Manders coefficients for detections
+Added a version for 0.2.0m7
+
+Colocalization 0.1.2.groovy - Version of above script that works for 0.1.2 and 0.1.3. Does not work for 0.2.0+
+
+Create detection measurements.groovy - Create new detection measurements as combinations of other detection measurements.
+For example, the ratio of the channel 2 nuclear intensity to the channel 3 nuclear intensity.
+
+Density map measurements to objects.groovy - Pete's scripts to use the density maps to apply measurements to objects
+
+Detections - add full intensity measurements.groovy - Adds intensity measurements to objects, including median and border/membrane
+
+Distance between two annotations.groovy - Calculates the distance between two annotations. Also the overlap if there is any overlap.
+
+Distances between annotations.groovy - Calculates distances between edges of all annotations and classes in the image.
+
+Label cells by TMA core.groovy - Rename cells based on their parent core. Could probably be done better with getDecendantObjects()
+
+Local Cell Density.groovy - Add a measurement to each cell based on the number of other cells within X microns - very slow
+
+Metadata by script in m5.groovy - set pixel sizes by adjusting the metadata for an image.
+metadata by script in m10.groovy - 0.2.0 M10
+
+Nearest Neighbors by class.groovy - calculates NN distances
+
+Nuclear and cytoplasmic color vector means.groovy - Complicated script, but essentially allows you to create sets of color vectors
+and obtain cytoplasmic and nuclear mean values for them. Useful in complex brightfield stains, has been used to differentiate cells in
+5 stain plus hematoxylin images.
+
+Points are in which annotations.groovy - version 1 See thread for intended use: https://forum.image.sc/t/manual-annotation-and-measurements/25051/5?u=research_associate
+
+RSquared all channels per annotation.groovy - calculates R^2 between every pair of possible channels, per annotation.
+
+RSquared calculation.groovy - Calculates R-squared values. Does not currently save them anywhere.
+
+
+Tile summary measurements to parent Annotation.groovy - Creates measurements for the total area and percentage area for each class.
+Percentages are based off of annotation area, a different calculation would be needed if you have a "whitespace" tile type
+
+Total subcellular intensity to cell value.groovy - Sums the total intensity of subcellular detections (area*mean intensity summed).
+
+
+
+Primary functions here include:
+Using "hierarchy = getCurrentHierarchy()" to get access to the hierarchy, so that you can more easily access subsets of cells
+
+Using findAll{true/false statements here} to generate lists of objects you want to perform operations on.
+The following gets all objects that are positive within whatever preceeds findAll
+.findAll{it.getPathClass() == getPathClass("Positive")}
+
+The simplest way to access a measurement is... measurement(object,"measurement name")
+So if I wanted to print the nuclear area of each of my cells, for some reason:
+getCellObjects().each{
+    print measurement(it, "Nucleus: Area)
+}
+That cycles through each cell, and prints "it"s nuclear area.
+
+The following access the measurement list, which is the list you see in the lower right of the Hierarchy tab when selecting 
+an object.
+getMeasurementList()
+getMeasurementValue(key)
+putMeasurement(key, value)
+
+Sometimes you may want to search an objects list using:
+ml = object.getMeasurementList()
+to generate a list called ml.
+
+For any given list of objects, you could also use
+getCellObjects().each{ measurement(it, "Nucleus: Area")}
+to access the nuclear area of each cell.
+
+Other times, you may know exactly what you want to modify, and can just use:
+object.getMeasurementList().putMeasurement(key, value)
+For adding a micrometer symbol in v1.2, use  " + qupath.lib.common.GeneralTools.micrometerSymbol() + "

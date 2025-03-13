@@ -1,0 +1,31 @@
+Scripts mostly taken from Pete, and also from the forums. For easy access and reference.
+
+TOC
+
+Remove detections outside annotations.groovy - Removes detections without a parent object.
+
+Removing measurements by Weka file.groovy - Uses the results of Weka classification analysis of your training set 
+to select the "best" measurements plus any specific ones you want to keep. Then it removes the rest. Use this to clean up
+large amounts measurements like LBP, Haralick, Smoothed etc.
+
+Removing measurements by keyword.groovy - Variant of the above, but clean up your measurement lists by keyword. Useful for 
+removing ALL smoothed measurements as part of a script.
+
+Remove objects by class name.groovy - Remove objects that have a class with a certain string in the name
+
+Remove subcells after 0.2.0m5.groovy - collect and remove subcellular detections
+
+Removing small annotation bits.groovy - Cleans up small tissue bits, though this can often be done by using better settings
+during Simple Tissue Detection. Can be useful if your script fragments your annotations at a later point.
+
+removing specific annotations.groovy - An example of deleting objects by creating a list, then removing the objects in the list.
+
+
+
+Generally you will want to remove objects either by selecting them and using:
+clearSelectedObjects(false);
+or creating a list and using:
+removeObjects(yourList,true)
+
+True and false in the above statements indicate whether you also want to remove objects within the object you are deleting,
+such as cells within an annotation.  True indicates that you want to keep the contained objects, while false removes everything.

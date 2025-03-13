@@ -1,0 +1,11 @@
+Files from QuPath that can be swapped in place of their default counterparts using Gradle for alternate functionality.
+Now adding modifications to the UI
+
+TOC
+AbstractTileableDetectionPlugin.java - Changes the tiling size to work better for high resolution images where the tiles might break up
+too many individual cells.
+
+Add button.groovy - script that adds a button to the UI that... can do things. If you make it do them.
+
+WatershedCellDetection.java - Gives users the ability to choose weights for various stains when detecting cells. This is in addition to 
+"OD sum" and "Hematoxylin stain" option in the dropdown menu.

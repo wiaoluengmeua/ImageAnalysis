@@ -1,0 +1,5 @@
+Image exporting in QuPath
+Note, this is likely a mess, and I won't be able to provide much support since I don't do this much, 
+but requests are common and I have trouble tracking things down each time.
+
+Added a script from the forum for importing binary masks as annotations.

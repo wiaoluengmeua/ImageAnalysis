@@ -1,0 +1,30 @@
+Collections of scripts harvested mainly from Pete, but also picked up from the forums
+
+TOC
+
+Annotation subtraction example.groovy - An example of creating and subtracing ROIs through scripting
+
+Create annotation of fixed size.groovy - see https://petebankhead.github.io/qupath/scripting/2018/03/09/script-create-fixed-size-region.html
+
+Create object based on Viewer position.groovy - Creates an object at the Viewer position. In this case a rectangle. Useful if you want
+to create the exact same size object multiple times and then move it to an area of interest for subsampling.
+
+Creating a TMA from script.groovy - Creates a basic TMA, which you would need to then manually position. Easiest to start small and then
+add rows and columns through the QuPath TMA menu.
+
+Creating TMA annotations and set missing by area.groovy - Takes a grid, runs a tissue detection (edit this to your own), and then set
+missing and delete annotations in any cores below a threshold.
+
+TMA Dearrayer from a script.groovy - More options for the TMA dearrayer than through the GUI. Read through the script carefully.
+
+Tumor invasion areas.groovy - Generates annotation bands from the surface of the tumor inward. Can be used on tumors on the
+surface of the tissue (bordering whitespace), but check the link included in the script.
+
+
+Use points to place cells.groovy - mark locations using the Points tool, then place cells of a given class/size on top of each point.
+
+Zstack or Time series full image annotations.groovy - Go through all layers of a Z stack or time series and place a full image annotation
+in each.
+
+Zstack or time series annotation copy.groovy - Similar to previous, but take all current annotations, and copy them to ALL OTHER time 
+or Z frames.

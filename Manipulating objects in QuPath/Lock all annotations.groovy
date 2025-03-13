@@ -1,0 +1,1 @@
+getAnnotationObjects().each{it.setLocked(true)}

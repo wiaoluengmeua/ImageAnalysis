@@ -1,0 +1,57 @@
+Scripts mostly taken from Pete, and also from the forums. For easy access and reference.
+
+TOC
+
+Alignment: Several scripts to assist in alignment as of M9. Store scripts make files using the Affine transformation while
+TransferObjects uses the stored file in the Affine folder with the current image name to move objects into it.
+The final result is that one set of files can be generated for the transforms, and those transforms can be accessed to move objects
+back and forth between the images.
+
+Change annotations into Cell objects.groovy - Converts annotations into PathCellObjects, which allows certian functions to work within
+them, namely Subcellular detection.
+
+Change some annotations into detections.groovy - Similar to above, except with generic detections.
+Change some annotations into detections 0.2.0M11.groovy - updated
+
+Copying annotations between images.groovy - Two scripts to save and restore annotations using a separate file.
+
+Create cells from detections.groovy - allows editing of base nuclei, then use those ROIs to create a cell with cell expansion
+
+Create detection objects from annotations.groovy - Another version of creating detection objects, with a few other options (bounding box)
+
+
+Force update selected annotation.groovy - Updates a single annotation in the case when the cells within it are not considered child objects.
+
+Lock all annotations.groovy
+
+Merge touching detections.groovy - what it says! Similar to mergeSelectedAnnotations() command.
+
+Mirroring objects.groovy - Creating a mirror image object (or other transformations)
+
+Object Subtraction.groovy - Performing subtraction between two objects (to create holes, for instance)
+
+Points to detections conversion.groovy - Change point annotations into detections
+
+Polyline to polygon.groovy - convert a polyline into a closed polygon. No holes.1
+
+Rename annotations and modify annotation lists.groovy - Mass renaming. Creates a subset of a list and incrementally names annotations. 
+
+Rings around an annotation.groovy - Create bands around an annotation, for example stroma within X um, 2X um, 3X um etc of a tumor
+
+Rotate all annotations.groovy - Another transformation to rotate annotations, partial tissue alignment when overlaying a QPDATA file.
+
+Set all TMA cores to valid.groovy - Newly added cores, through the TMA menu, will not be "valid" and will be ignored. This will fix that.
+
+Set TMA cores to valid if tissue area over threshold.groovy - Same but runs simple tissue detection and chooses which TMA cores to set
+as valid based on the area of tissue detected.
+
+Split annotations into contiguous areas.groovy - And version 2, two ways to split annotations.
+
+TMA-add cell measurements by class.groovy - Adds percentage by class, and cells/mm^2 to the TMA core for every existing cell class
+
+Tumor invasion areas 0.2.0.groovy - uses the tissue border and tumor annotation to generate regions of increasing distance from tumor border
+
+Update detections in annotations.groovy - Another version of Force update selected annotation.groovy that works for multiple annotations.
+
+Use points to create cells.groovy - https://gist.github.com/Svidro/ffb6951e70187de5eb007290f61aea4a#file-use-points-to-place-cells-groovy
+Duplicate entry.

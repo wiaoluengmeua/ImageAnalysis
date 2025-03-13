@@ -1,0 +1,44 @@
+// Set of scripts for running multiple cell detections in sequence. Can be used as many times as needed, though it might be best
+//to use different detection file names for each iteration through the scripts
+//Updated 24/2/19 for to ensure directory exists
+
+//STEP 1
+selectAnnotations()
+//YOUR CELL DETECTION LINE HERE
+mkdirs(buildFilePath(PROJECT_BASE_DIR, 'detection object files'))
+def path = buildFilePath(PROJECT_BASE_DIR, 'detection object files', getCurrentImageData().getServer().getShortServerName()+' objects') 
+def detections = getCellObjects() //.collect {new qupath.lib.objects.PathCellObject(it.getROI(), it.getPathClass())}
+new File(path).withObjectOutputStream {
+    it.writeObject(detections)
+}
+print 'Done!'
+
+//STEP2
+
+//Run another cell detection
+
+//STEP3
+def path = buildFilePath(PROJECT_BASE_DIR, 'detection object files', getCurrentImageData().getServer().getShortServerName()+' objects') 
+def detections = null
+new File(path).withObjectInputStream {
+    detections = it.readObject()
+}
+addObjects(detections)
+fireHierarchyUpdate()
+print 'Added ' + detections
+
+//STEP4
+//Check for overlapping cells. This script simply eliminates smaller cells within larger cells, but this may not always be the
+//criterion you want to use. Adjust as necessary
+hierarchy = getCurrentHierarchy()
+
+def parentCellsList = []
+getAnnotationObjects().each{  parentCellsList << it.getChildObjects().findAll{p->p.getChildObjects().size()>0}  }
+
+parentCellsList.each{
+    it.each{
+        removeObjects(it.getChildObjects(), false)
+    } 
+}   
+fireHierarchyUpdate()
+print "Done"
